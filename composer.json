@@ -1,6 +1,6 @@
 {
     "name": "matriphe/laravel-airbrake-codebase",
-    "description": "Laravel package for Codebase (https://www.codebasehq.com/) Exceptions handler using Airbrake API",
+    "description": "Laravel 5 package for Codebase Exceptions (https://www.codebasehq.com/) handler using Airbrake API",
     "keywords": ["laravel", "airbrake", "codebase", "exceptions", "bug", "error", "log", "report"],
     "require": {
         "php": ">=5.4",
