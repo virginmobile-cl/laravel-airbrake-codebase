@@ -39,7 +39,7 @@ class CodebaseServiceProvider extends ServiceProvider
                     $this->filterEnvKey($notifier, $envKey);
                 }
                 
-                return $notice;
+                return $notifier;
             });
             
             return $airbrake;

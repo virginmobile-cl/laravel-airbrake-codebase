@@ -17,5 +17,5 @@ return [
     'key' => env('CODEBASE_API_KEY', ''),
     
     // Connection to the Codebase
-    'host' => 'https://exceptions.codebasehq.com',
+    'host' => 'exceptions.codebasehq.com',
 ];
