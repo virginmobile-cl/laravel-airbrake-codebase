@@ -1,0 +1,23 @@
+{
+    "name": "matriphe/laravel-airbrake-codebase",
+    "description": "Laravel package for Codebase (https://www.codebasehq.com/) Exceptions handler using Airbrake API",
+    "keywords": ["laravel", "airbrake", "codebase", "exceptions", "bug", "error", "log", "report"],
+    "require": {
+        "php": ">=5.4",
+        "illuminate/support": "5.*"
+        "airbrake/phpbrake": "^0.3.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muhammad Zamroni",
+            "email": "halo@matriphe.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Matriphe\\Codebase\\": "src/"
+        }
+    },
+    "prefer-stable": true
+}
