@@ -33,12 +33,7 @@ class CodebaseExceptionHandler implements ExceptionHandler
      */
     public function report(Exception $e)
     {
-        if (
-            config('codebase.enabled')
-            && is_array(config('codebase.ignore_environments')) 
-            && !in_array(app()->environment(), config('codebase.ignore_environments')) 
-            && $this->handler->shouldReport($e)
-        ) {
+        if (config('codebase.enabled') && $this->handler->shouldReport($e)) {
             $this->app['Airbrake\Instance']->notify($e);
         }
 

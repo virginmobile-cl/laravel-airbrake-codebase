@@ -27,7 +27,7 @@ class CodebaseServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Airbrake\Instance', function ($app) {
             $airbrake = new Notifier([
-                'projectId'  => config('codebase.id'),
+                'projectId' => config('codebase.id'),
                 'projectKey' => config('codebase.key'),
                 'host' => config('codebase.host'),
             ]);
@@ -52,6 +52,7 @@ class CodebaseServiceProvider extends ServiceProvider
             new CodebaseExceptionHandler($handler, $this->app)
         );
     }
+    
     protected function filterEnvKey(&$notice, $envKey)
     {
         if (isset($notice['environment'][$envKey])) {

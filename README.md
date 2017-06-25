@@ -1,10 +1,8 @@
 # Laravel Airbrake Codebase
 
-This is a Laravel 5 service provider for [Codebase](https://www.codebasehq.com/) Exceptions handler using [Airbrake PHP package](https://github.com/airbrake/phpbrake).
+This is a Laravel 5 package for [Codebase](https://www.codebasehq.com/) Exceptions handler using [Airbrake PHP package](https://github.com/airbrake/phpbrake).
 
-The service provider will configure an instance of `Airbrake\Notifier` with an project ID and key from Codebase Exceptions handler.
-
-The service provider will also detect environment and ignore the listed environments.
+This package will configure an instance of `Airbrake\Notifier` with an project ID and key from Codebase Exceptions handler.
 
 ## Install
 
@@ -33,7 +31,7 @@ php artisan vendor:publish --provider="Matriphe\Codebase\CodebaseServiceProvider
 
 ## Ignoring Exceptions
 
-To ignore exceptions sent to Codebase Exceptions, just add the exceptions in `app/Exceptions/Handler.php` in `$dontReport` section.
+To ignore some exceptions sent to Codebase Exceptions, just add the ignored exceptions in `app/Exceptions/Handler.php` in `$dontReport` section of your application.
 
 ```php
 class Handler extends ExceptionHandler
@@ -46,7 +44,8 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         HttpException::class,
         ModelNotFoundException::class,
-        JWTException::class,
+        ...
+        YourIgnoredException::class,
         ...
     ];
     
