@@ -4,7 +4,6 @@ namespace Matriphe\Codebase;
 
 use Exception;
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Contracts\Foundation\Application;
 
 class CodebaseExceptionHandler implements ExceptionHandler
 {
@@ -18,7 +17,7 @@ class CodebaseExceptionHandler implements ExceptionHandler
      */
     private $app;
 
-    public function __construct(ExceptionHandler $handler, Application $app)
+    public function __construct(ExceptionHandler $handler, $app)
     {
         $this->handler = $handler;
         $this->app = $app;

@@ -15,7 +15,7 @@ class CodebaseServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/codebase.php' => config_path('codebase.php'),
+            __DIR__.'/../config/codebase.php' => $this->configPath('codebase.php'),
         ]);
     }
     /**
@@ -84,5 +84,10 @@ class CodebaseServiceProvider extends ServiceProvider
     protected function setEnvName(&$notice)
     {
         $notice['context']['environment'] = env('APP_ENV');
+    }
+    
+    protected function configPath($path = '')
+    {
+        return app()->basePath() . '/config' . ($path ? '/' . $path : $path);
     }
 }
