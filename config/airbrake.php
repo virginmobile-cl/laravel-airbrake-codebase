@@ -40,4 +40,6 @@ return [
     */
 
     'host' => 'exceptions.codebasehq.com',
+
+    'enabled' => env('environment', false),
 ];

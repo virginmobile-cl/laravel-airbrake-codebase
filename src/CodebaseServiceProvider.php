@@ -33,17 +33,7 @@ class CodebaseServiceProvider extends ServiceProvider
                 'appVersion' => config('airbrake.appVersion'),
                 'environment' => config('airbrake.environment'),
             ]);
-            
-            $airbrake->addFilter(function ($notifier) {
-                $this->setEnvName($notifier);
-                
-                foreach ($this->getEnvKeys() as $envKey) {
-                    $this->filterEnvKey($notifier, $envKey);
-                }
-                
-                return $notifier;
-            });
-            
+
             return $airbrake;
         });
         
@@ -62,27 +52,11 @@ class CodebaseServiceProvider extends ServiceProvider
         }
     }
     
-    protected function getEnvFile()
-    {
-        $filePath = $this->app->environmentPath().'/'.$this->app->environmentFile();
-        $envFile = @file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        
-        return is_array($envFile) ? $envFile : [];
-    }
-    
     protected function getEnvKeyFromLine($envLine)
     {
         return trim(current(explode('=', $envLine)));
     }
-    
-    protected function getEnvKeys()
-    {
-        $envFile = $this->getEnvFile();
-        $envKeys = array_map([$this, 'getEnvKeyFromLine'], $envFile);
-        
-        return $envKeys;
-    }
-    
+
     protected function setEnvName(&$notice)
     {
         $notice['context']['environment'] = env('APP_ENV');
