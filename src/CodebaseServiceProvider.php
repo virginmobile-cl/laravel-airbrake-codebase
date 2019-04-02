@@ -29,7 +29,6 @@ class CodebaseServiceProvider extends ServiceProvider
             $airbrake = new Notifier([
                 'projectId' => config('airbrake.id'),
                 'projectKey' => config('airbrake.key'),
-                'host' => config('airbrake.host'),
                 'appVersion' => config('airbrake.appVersion'),
                 'environment' => config('airbrake.environment'),
             ]);
@@ -51,7 +50,7 @@ class CodebaseServiceProvider extends ServiceProvider
             $notice['environment'][$envKey] = 'FILTERED';
         }
     }
-    
+
     protected function getEnvKeyFromLine($envLine)
     {
         return trim(current(explode('=', $envLine)));
