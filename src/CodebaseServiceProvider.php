@@ -15,7 +15,7 @@ class CodebaseServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/codebase.php' => $this->configPath('codebase.php'),
+            __DIR__.'/../config/airbrake.php' => $this->configPath('airbrake.php'),
         ]);
     }
     /**
@@ -27,9 +27,11 @@ class CodebaseServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Airbrake\Instance', function ($app) {
             $airbrake = new Notifier([
-                'projectId' => config('codebase.id'),
-                'projectKey' => config('codebase.key'),
-                'host' => config('codebase.host'),
+                'projectId' => config('airbrake.id'),
+                'projectKey' => config('airbrake.key'),
+                'host' => config('airbrake.host'),
+                'appVersion' => config('airbrake.appVersion'),
+                'environment' => config('airbrake.environment'),
             ]);
             
             $airbrake->addFilter(function ($notifier) {
